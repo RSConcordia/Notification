@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0"
+        id="br.dotter.demo"
+        version = "1.0.0">
+		
+    <name>Notification</name>
+    <description>
+       Notification
+    </description>
+	
+	<author href="http://www.dotter.com.br" email="eduardo@dotter.com.br">
+    Dotter do Brasil Ltda
+    </author>
+	
+	<plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
+	<plugin name="com.guykileveryone.uniquedeviceid" spec="1.0.0" source="pgb" />
+    <gap:plugin name="org.apache.cordova.device" />
+		
+	<preference name="exit-on-suspend" value="true" />
+	<preference name="phonegap-version" value="cli-5.2.0" />
+    <preference name="orientation"      value="portrait" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="false" />
+    <preference name="webviewbounce"    value="false" />
+	
+    <content src="index.html" />
+    <access origin="*"/>	
+	<access origin="http://chat.v-id.net/Demo/*" />
+	<access origin="content:///*" />
+	<allow-intent href="http://*/*" />
+	<allow-intent href="https://*/*" />
+	<allow-navigation href="http://*/*" />
+	<allow-navigation href="https://*/*" />
+	<allow-navigation href="data:*" />
+    <preference name="fullscreen" value="false" />
+    <preference name="DisallowOverscroll" value="true" />   
+</widget>

@@ -1,0 +1,105 @@
+body {
+	position: fixed;
+	background: #FFF;
+	font-family: Time News Roman;
+	color: #D88B45;	
+	width: 100%;
+	height: 100%;
+	
+	padding: 1%;
+}
+
+div.window{
+	text-align: center;
+}
+
+div.news{
+	width: 25%;
+	height: 20%;
+	margin-top: 5%;	
+	padding: 1%;
+	border-radius: 10px;
+	background: #FCFCFC;
+	box-shadow: 1px 1px 5px #91AA9D, inset 1px 1px 5px #FFF;
+	text-align: right;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------*
+																--Recuperar Bagagem Checkbox--
+*-------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+p.text{
+	font-size: 22px;
+	color: #D88B45;
+}
+
+div.container {
+	height: 20%;
+	text-align: center;
+	width: 25%;
+	padding: 1%;
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px #91AA9D, inset 1px 1px 5px #FFF;
+}
+
+label.lbl {
+	position: relative;
+	display: block;    
+	height: 34px;
+	width: 65px;  
+	margin: 30px auto;   
+	border-radius: 100px;
+	cursor: pointer;    
+	background: #FFF;
+	box-shadow: inset 0px 2px 2px #a1a1a1, 1px 1px 2px #f2f2f2;
+}
+
+div.off{
+	position: absolute;
+	display: block;
+	width: 38px;
+	height: 38px;
+	border-radius: 30px;
+
+	right: -4px;
+	top: -2px;   
+	background: #FFF;
+	box-shadow: 2px 2px 3px #FF890A, inset 2px 2px 3px #FF890A;
+}
+
+div.on{
+	position: absolute;
+	display: block;
+	width: 38px;
+	height: 38px;
+	border-radius: 30px;
+	top: -2px;   
+	background: #FFF;
+	box-shadow: 2px 2px 3px #00DDFF, inset 2px 2px 3px #00DDFF;
+	left: -4px; 
+}
+
+h3.notice-on{
+  color: #00DDFF;
+}
+h3.notice-off{
+  color: #FF890A;
+}
+
+div.div-find-status{
+	position: absolute;
+	display: block;
+	top: 50%;
+	width: 80%;
+	padding: 2%;
+}
+
+tb.tb-notice{
+	margin-bottom: 15%;
+}
+
+tr.tr-notice{
+	box-shadow: 0px 2px 5px #172a60, inset 1px 1px 5px #f2f2f2;
+}
+
+

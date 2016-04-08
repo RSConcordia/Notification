@@ -13,11 +13,13 @@
 	
 	var notification = {
 		start: function(){
-			time = setInterval(notification.display , 500);	
+			time = setInterval(notification.display , 1000);	
 		},
 		
 		display: function(){			
 			var data = server.search();
+			notificationId++;
+			document.getElementById('news').innerHTML = notificationId;
 			if(data){
 				root.checkOff();
 				data = data.split(';');
@@ -25,8 +27,6 @@
 				document.getElementById('news').innerHTML += "Efetivado: "+data[1]+"<br>";
 				document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";
 				document.getElementById('news').innerHTML += "lon: "+data[3]+"<br>";
-								
-				notificationId++;
 			}
 		},
 		

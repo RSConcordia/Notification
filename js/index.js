@@ -1,4 +1,13 @@
 	
+	(function(){
+		document.addEventListener("deviceready", function onDeviceReady(){
+			var deviceId = device.uuid;
+			alert(deviceId);
+			localStorage.setItem("uuid", deviceId);
+		}, false);
+	})(); 
+	var uuid =  localStorage.getItem("uuid");
+	var server = "http://chat.v-id.net/Demo/";
 	var time;
 	var notificationId = 0;
 	
@@ -7,15 +16,17 @@
 			time = setInterval(notification.display , 500);	
 		},
 		
-		display: function(){
-			notificationId++;
-			document.getElementById('news').innerHTML = notificationId;
-			
+		display: function(){			
 			var data = server.search();
 			if(data){
 				root.checkOff();
 				data = data.split(';');
-				document.getElementById('news').innerHTML = data[3];
+				document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
+				document.getElementById('news').innerHTML += "Efetivado: "+data[1]+"<br>";
+				document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";
+				document.getElementById('news').innerHTML += "lon: "+data[3]+"<br>";
+								
+				notificationId++;
 			}
 		},
 		
@@ -26,12 +37,17 @@
 	
 	var server = {
 		search: function(){
-			if(notificationId == 23){
-				return "uuid;file;date;notice";
-			}
-			else{
-				return false;
-			}
+			$.ajax({	
+				url: server + "VIDS/"+uuid+"/status/notice.txt",
+				type: "POST",
+				dataType: "text",
+				success: function (data){					
+					return data;
+				},
+				error: function(){
+					return false;
+				}
+			});
 		}
 	}
 		

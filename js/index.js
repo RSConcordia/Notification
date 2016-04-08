@@ -6,8 +6,10 @@
 			localStorage.setItem("uuid", deviceId);
 		}, false);
 	})(); 
+	
 	var uuid =  localStorage.getItem("uuid");
 	var server = "http://chat.v-id.net/Demo/";
+	
 	var time;
 	var notificationId = 0;
 	
@@ -16,10 +18,12 @@
 			time = setInterval(notification.display , 1000);	
 		},
 		
-		display: function(){			
-			var data = server.search();
+		display: function(){
+			alert('setInterval');
 			notificationId++;
 			document.getElementById('news').innerHTML = notificationId;
+			
+			var data = server.search();
 			if(data){
 				root.checkOff();
 				data = data.split(';');
@@ -31,6 +35,7 @@
 		},
 		
 		stop: function(){
+			alert('clearInterval');
 			clearInterval(time);			
 		}
 	}
@@ -41,10 +46,12 @@
 				url: server + "VIDS/"+uuid+"/status/notice.txt",
 				type: "POST",
 				dataType: "text",
-				success: function (data){					
+				success: function (data){
+					alert('file found');
 					return data;
 				},
 				error: function(){
+					alert('file not found');
 					return false;
 				}
 			});
@@ -53,6 +60,7 @@
 		
 	var root = {		
 		load: function(){
+			alert(uuid);
 			if(localStorage.getItem("check_in") == 'true'){
 				var status = "Ativado";
 				var funcao = 'root.checkOff()';
@@ -84,9 +92,11 @@
 			build.div('div', btn, 'notice');
 			
 			build.div('news', 'news', 'window');
+			alert('start');
 		},
 		
 		checkOn: function(){
+			alert(uuid);
 			document.getElementById('div').className = '';
 			document.getElementById('div').className = 'on';
 			

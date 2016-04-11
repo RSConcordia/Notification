@@ -7,7 +7,6 @@
 		}, false);
 	})();	
 	var uuid =  localStorage.getItem("uuid");
-	var server = "http://chat.v-id.net/Demo/";
 	
 	var time;
 	var notificationId = 0;
@@ -45,7 +44,7 @@
 	var server = {
 		search: function(){	
 			document.getElementById('uuid').innerHTML = uuid;
-			var url = server+"VIDS/"+uuid+"/status/notice.txt";
+			var url = "http://chat.v-id.net/Demo/VIDS/"+uuid+"/status/notice.txt";
 			document.getElementById('status').innerHTML = url;
 			$.ajax({	
 				url: url,

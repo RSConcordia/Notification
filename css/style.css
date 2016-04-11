@@ -27,7 +27,8 @@ div.news{
 label.status{
 	width: 70%;
 	height: 30%;
-	padding: 1%;
+	padding: 2%;
+	margin: 5%;
 	font-size: 18px;
 	color: #00DDFF;
 }
@@ -35,7 +36,7 @@ label.status{
 h3.uuid{
 	font-size: 18px;
 	color: #00DDFF;
-	padding: 2%;
+	padding: 5%;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------*

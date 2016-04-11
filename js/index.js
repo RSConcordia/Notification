@@ -43,6 +43,8 @@
 	
 	var server = {
 		search: function(){
+			document.getElementById('status').innerHTML = 'Search server';
+			document.getElementById('uuid').innerHTML = uuid;
 			$.ajax({	
 				url: server + "VIDS/"+uuid+"/status/notice.txt",
 				type: "POST",
@@ -109,7 +111,8 @@
 		
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOff()');
 			
-			document.getElementById('status').innerHTML = 'Start Loop <br>'+uuid;
+			document.getElementById('status').innerHTML = 'Start Loop';
+			document.getElementById('uuid').innerHTML = uuid;
 			
 			notification.start();
 		},

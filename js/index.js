@@ -1,4 +1,12 @@
-		
+	
+	(function(){
+		document.addEventListener("deviceready", function onDeviceReady(){
+			var deviceId = device.uuid;
+			document.getElementById('status').innerHTML = deviceId;
+			localStorage.setItem("uuid", deviceId);
+			
+		}, false);
+	})();	
 	var uuid =  localStorage.getItem("uuid");
 	var server = "http://chat.v-id.net/Demo/";
 	
@@ -28,7 +36,7 @@
 		},
 		
 		stop: function(){
-			alert('clearInterval');
+			document.getElementById('status').innerHTML = 'clearInterval';
 			clearInterval(time);			
 		}
 	}
@@ -90,7 +98,6 @@
 		},
 		
 		checkOn: function(){
-			alert(uuid);
 			document.getElementById('div').className = '';
 			document.getElementById('div').className = 'on';
 			
@@ -102,7 +109,7 @@
 		
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOff()');
 			
-			document.getElementById('status').innerHTML = 'Start Loop';
+			document.getElementById('status').innerHTML = 'Start Loop <br>'+uuid;
 			
 			notification.start();
 		},
@@ -123,13 +130,5 @@
 			notification.stop();
 		},
 	}
-	
-	(function(){
-		document.addEventListener("deviceready", function onDeviceReady(){
-			var deviceId = device.uuid;
-			alert(deviceId);
-			localStorage.setItem("uuid", deviceId);
-		}, false);
-	})(); 
 	
 	root.load();

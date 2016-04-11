@@ -24,7 +24,9 @@
 			notificationId++;
 			document.getElementById('news').innerHTML = notificationId;
 			
+			document.getElementById('uuid').innerHTML = uuid;			
 			var data = server.search();
+			document.getElementById('status').innerHTML = data;
 			if(data){
 				root.checkOff();
 				data = data.split(';');

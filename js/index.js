@@ -52,13 +52,13 @@
 				type: "POST",
 				dataType: "text",
 				success: function (data){
-					document.getElementById('status').innerHTML = 'File found';
+					document.getElementById('status').innerHTML = url;
 					alert('File found');
 					return data;
 				},
 				error: function(){
-					document.getElementById('status').innerHTML = 'File not found';
-					alert();
+					document.getElementById('status').innerHTML = url;
+					alert("not found");
 					return false;
 				}
 			});			

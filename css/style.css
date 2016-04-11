@@ -24,16 +24,7 @@ div.news{
 	text-align: right;
 }
 
-label.status{
-	width: 70%;
-	height: 30%;
-	padding: 2%;
-	margin: 5%;
-	font-size: 18px;
-	color: #00DDFF;
-}
-
-h3.uuid{
+h3.status{
 	font-size: 18px;
 	color: #00DDFF;
 	padding: 5%;

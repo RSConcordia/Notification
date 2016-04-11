@@ -17,7 +17,6 @@
 		},
 		
 		display: function(){
-			document.getElementById('uuid').innerHTML = 'setInterval';
 			notificationId++;
 			document.getElementById('news').innerHTML = notificationId;
 			
@@ -42,7 +41,6 @@
 		},
 		
 		stop: function(){
-			document.getElementById('status').innerHTML = 'clearInterval';
 			clearInterval(time);			
 		}
 	}
@@ -80,9 +78,6 @@
 			build.div('div', btn, 'notice');
 			
 			build.div('news', 'news', 'window');
-			
-			build.label('status', 'status', '...', 'window');
-			document.getElementById('status').innerHTML = 'Load Completed';
 		},
 		
 		checkOn: function(){
@@ -98,7 +93,6 @@
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOff()');
 			
 			document.getElementById('status').innerHTML = 'Start Loop';
-			document.getElementById('uuid').innerHTML = uuid;
 			
 			notification.start();
 		},
@@ -112,8 +106,6 @@
 			document.getElementById('notice-status').innerHTML = 'Desativado';
 			
 			localStorage.setItem("check_in", 'false');
-			
-			document.getElementById('status').innerHTML = 'Loop Cancel';
 			
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOn()');
 			notification.stop();

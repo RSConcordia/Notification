@@ -22,29 +22,6 @@
 			notificationId++;
 			document.getElementById('news').innerHTML = notificationId;
 			
-			document.getElementById('uuid').innerHTML = uuid;			
-			var data = server.search();
-			document.getElementById('status').innerHTML = data;
-			
-			if(data != ""){
-				root.checkOff();
-				data = data.split(';');
-				document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
-				document.getElementById('news').innerHTML += "Efetivado: "+data[1]+"<br>";
-				document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";
-				document.getElementById('news').innerHTML += "lon: "+data[3]+"<br>";
-			}
-		},
-		
-		stop: function(){
-			document.getElementById('status').innerHTML = 'clearInterval';
-			clearInterval(time);			
-		}
-	}
-	
-	var server = {
-		search: function(){	
-			document.getElementById('uuid').innerHTML = uuid;
 			var url = "http://chat.v-id.net/Demo/VIDS/"+uuid+"/status/notice.txt";
 			document.getElementById('status').innerHTML = url;
 			$.ajax({	
@@ -52,18 +29,26 @@
 				type: "POST",
 				dataType: "text",
 				success: function (data){
-					document.getElementById('status').innerHTML = url;
-					return data;
+					root.checkOff();
+					data = data.split(';');
+					document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
+					document.getElementById('news').innerHTML += "Efetivado: "+data[1]+"<br>";
+					document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";
+					document.getElementById('news').innerHTML += "lon: "+data[3]+"<br>";
 				},
 				error: function(){
 					document.getElementById('status').innerHTML = url;
 					alert("not found");
-					return "";
 				}
-			});			
+			});	
+		},
+		
+		stop: function(){
+			document.getElementById('status').innerHTML = 'clearInterval';
+			clearInterval(time);			
 		}
 	}
-		
+			
 	var root = {		
 		load: function(){
 			if(localStorage.getItem("check_in") == 'true'){

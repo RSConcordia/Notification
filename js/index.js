@@ -44,10 +44,11 @@
 	
 	var server = {
 		search: function(){	
-			document.getElementById('status').innerHTML = 'Search server';
 			document.getElementById('uuid').innerHTML = uuid;
+			var url = server+"VIDS/"+uuid+"/status/notice.txt";
+			document.getElementById('status').innerHTML = url;
 			$.ajax({	
-				url: server + "VIDS/"+uuid+"/status/notice.txt",
+				url: url,
 				type: "POST",
 				dataType: "text",
 				success: function (data){
@@ -57,7 +58,7 @@
 				},
 				error: function(){
 					document.getElementById('status').innerHTML = 'File not found';
-					alert("VIDS/"+uuid+"/status/notice.txt");
+					alert();
 					return false;
 				}
 			});			

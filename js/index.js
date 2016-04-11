@@ -53,10 +53,12 @@
 				dataType: "text",
 				success: function (data){
 					document.getElementById('status').innerHTML = 'File found';
+					alert('File found');
 					return data;
 				},
 				error: function(){
 					document.getElementById('status').innerHTML = 'File not found';
+					alert('File not found');
 					return false;
 				}
 			});

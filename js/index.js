@@ -1,12 +1,4 @@
-	
-	(function(){
-		document.addEventListener("deviceready", function onDeviceReady(){
-			var deviceId = device.uuid;
-			alert(deviceId);
-			localStorage.setItem("uuid", deviceId);
-		}, false);
-	})(); 
-	
+		
 	var uuid =  localStorage.getItem("uuid");
 	var server = "http://chat.v-id.net/Demo/";
 	
@@ -125,5 +117,13 @@
 			notification.stop();
 		},
 	}
+	
+	(function(){
+		document.addEventListener("deviceready", function onDeviceReady(){
+			var deviceId = device.uuid;
+			alert(deviceId);
+			localStorage.setItem("uuid", deviceId);
+		}, false);
+	})(); 
 	
 	root.load();

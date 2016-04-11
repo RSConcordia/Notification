@@ -29,6 +29,7 @@
 				success: function (data){
 					root.checkOff();
 					data = data.split(',');
+					document.getElementById('news').setAttribute('text-align', 'left');
 					document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
 					document.getElementById('news').innerHTML += "Efetivado: "+data[1]+"<br>";
 					document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";

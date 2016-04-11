@@ -25,7 +25,8 @@
 			document.getElementById('uuid').innerHTML = uuid;			
 			var data = server.search();
 			document.getElementById('status').innerHTML = data;
-			if(data){
+			
+			if(data != ""){
 				root.checkOff();
 				data = data.split(';');
 				document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
@@ -52,13 +53,12 @@
 				dataType: "text",
 				success: function (data){
 					document.getElementById('status').innerHTML = url;
-					alert('File found');
 					return data;
 				},
 				error: function(){
 					document.getElementById('status').innerHTML = url;
 					alert("not found");
-					return false;
+					return "";
 				}
 			});			
 		}

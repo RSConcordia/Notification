@@ -43,31 +43,24 @@
 	}
 	
 	var server = {
-		search: function(){
-			try{
-				document.getElementById('status').innerHTML = 'Search server';
-				document.getElementById('uuid').innerHTML = uuid;
-				$.ajax({	
-					url: server + "VIDS/"+uuid+"/status/notice.txt",
-					type: "POST",
-					dataType: "text",
-					success: function (data){
-						document.getElementById('status').innerHTML = 'File found';
-						alert('File found');
-						return data;
-					},
-					error: function(){
-						document.getElementById('status').innerHTML = 'File not found';
-						alert('File not found');
-						return false;
-					}
-				});
-			}
-			catch(err){
-				root.checkOff();
-				alert(err.message);
-				document.getElementById('status').innerHTML = err.message;
-			}
+		search: function(){	
+			document.getElementById('status').innerHTML = 'Search server';
+			document.getElementById('uuid').innerHTML = uuid;
+			$.ajax({	
+				url: server + "VIDS/"+uuid+"/status/notice.txt",
+				type: "POST",
+				dataType: "text",
+				success: function (data){
+					document.getElementById('status').innerHTML = 'File found';
+					alert('File found');
+					return data;
+				},
+				error: function(){
+					document.getElementById('status').innerHTML = 'File not found';
+					alert("VIDS/"+uuid+"/status/notice.txt");
+					return false;
+				}
+			});			
 		}
 	}
 		

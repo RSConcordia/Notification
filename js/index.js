@@ -5,13 +5,14 @@
 	var time;
 	var notificationId = 0;
 	
+	
 	var notification = {
 		start: function(){
 			time = setInterval(notification.display , 1000);	
 		},
 		
 		display: function(){
-			alert('setInterval');
+			document.getElementById('status').innerHTML = 'setInterval';
 			notificationId++;
 			document.getElementById('news').innerHTML = notificationId;
 			
@@ -39,11 +40,11 @@
 				type: "POST",
 				dataType: "text",
 				success: function (data){
-					alert('file found');
+					document.getElementById('status').innerHTML = 'File found';
 					return data;
 				},
 				error: function(){
-					alert('file not found');
+					document.getElementById('status').innerHTML = 'File not found';
 					return false;
 				}
 			});
@@ -52,7 +53,6 @@
 		
 	var root = {		
 		load: function(){
-			alert(uuid);
 			if(localStorage.getItem("check_in") == 'true'){
 				var status = "Ativado";
 				var funcao = 'root.checkOff()';
@@ -84,7 +84,9 @@
 			build.div('div', btn, 'notice');
 			
 			build.div('news', 'news', 'window');
-			alert('start');
+			
+			build.label('status', 'status', '...', 'window');
+			document.getElementById('status').innerHTML = 'Load Completed';
 		},
 		
 		checkOn: function(){
@@ -100,6 +102,8 @@
 		
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOff()');
 			
+			document.getElementById('status').innerHTML = 'Start Loop';
+			
 			notification.start();
 		},
 		
@@ -112,7 +116,9 @@
 			document.getElementById('notice-status').innerHTML = 'Desativado';
 			
 			localStorage.setItem("check_in", 'false');
-	
+			
+			document.getElementById('status').innerHTML = 'Loop Cancel';
+			
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOn()');
 			notification.stop();
 		},

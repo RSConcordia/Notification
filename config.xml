@@ -14,8 +14,8 @@
 	
 	<plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
 	<plugin name="com.guykileveryone.uniquedeviceid" spec="1.0.0" source="pgb" />
-	<plugin name="de.appplant.cordova.plugin.local-notification" spec="0.8.1" source="pgb" />
-	<!--gap:plugin name="org.apache.cordova.device" version="0.2.3"/--> 
+	<plugin name="de.appplant.cordova.plugin.local-notification" spec="0.7.4" source="pgb" />
+	<gap:plugin name="org.apache.cordova.device" version="0.2.8" /> 
 		
 	<preference name="exit-on-suspend" value="true" />
 	<preference name="phonegap-version" value="cli-5.2.0" />

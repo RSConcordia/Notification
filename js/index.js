@@ -1,9 +1,7 @@
 	
 	var uuid = (function(){
 		document.addEventListener("deviceready", function onDeviceReady(){
-				var deviceId = device.uuid;
-				alert(deviceId);
-				return deviceId;
+				localStorage.setItem("uuid", device.uuid);
 			}, false);	
 	})();	
 	var uuid =  localStorage.getItem("uuid"); 

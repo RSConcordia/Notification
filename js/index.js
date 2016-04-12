@@ -18,8 +18,8 @@
 					dataType: "text",
 					success: function (data){
 						root.checkOff();
-						app.local('Demo', 'Sua bagagem foi encontrada', '1');
-						notification_id++;
+						app.local('Demo', 'Sua bagagem foi encontrada', '1');				
+						app.display(data);
 					},
 					error: function(){
 						document.getElementById('status').innerHTML = "not found";
@@ -32,7 +32,7 @@
 			clearInterval(interval);			
 		},
 		
-	/*	display: function(data){
+		display: function(data){
 			data = data.split(',');
 			document.getElementById('news').setAttribute('text-align', 'left');
 			document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
@@ -40,31 +40,26 @@
 			document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";
 			document.getElementById('news').innerHTML += "lon: "+data[3]+"<br>";	
 			
-		},*/
+		},
 				
 		local: function(tipo, msg, indice){
-			try{
-				document.addEventListener('deviceready', function(){				
-					var time = new Date().getTime();
-					var _5_sec_from_now = new Date (time + 5 * 1000);
-					var now = new Date(time);
-					
-					cordova.plugins.notification.local.schedule({
-						id: notification_id,
-						title: tipo,
-						text: msg,
-						at: now,
-						sound: 'file://sound/bike_horn.mp3',
-						icon: 'file://img/virtualID.JPEG',
-						badge: notification_id			
-					});			
-					notification_id++;
-				}, false);			
-			}
-			catch(e){
-				alert(e);
-			}
-		}
+			document.addEventListener('deviceready', function(){				
+				var time = new Date().getTime();
+				var _5_sec_from_now = new Date (time + 5 * 1000);
+				var now = new Date(time);
+				
+				cordova.plugins.notification.local.schedule({
+					id: notification_id,
+					title: tipo,
+					text: msg,
+					at: now,
+					sound: 'file://sound/bike_horn.mp3',
+					icon: 'file://img/virtualID.JPEG',
+					badge: notification_id			
+				});				
+				notification_id++;
+			}, false);			
+		},
 	}
 			
 	var root = {		

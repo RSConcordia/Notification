@@ -135,6 +135,7 @@
 		getUUID: function(){
 			document.addEventListener("deviceready", function onDeviceReady(){
 				var deviceId = device.uuid;
+				alert(deviceId);
 				return deviceId;
 			}, false);		
 		}

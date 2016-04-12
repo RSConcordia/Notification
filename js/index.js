@@ -43,20 +43,25 @@
 		},*/
 				
 		local: function(tipo, msg, indice){
-			var time = new Date().getTime();
-			var _5_sec_from_now = new Date (time + 5 * 1000);
-			var now = new Date(time);
-			
-			cordova.plugins.notification.local.schedule({
-				id: notification_id,
-				title: tipo,
-				text: msg,
-				at: now,
-				sound: 'sound/bike_horn.mp3',
-				icon: 'img/virtualID.JPEG',
-				badge: notification_id			
-			});			
-			notification_id++;		
+			try{
+				var time = new Date().getTime();
+				var _5_sec_from_now = new Date (time + 5 * 1000);
+				var now = new Date(time);
+				
+				cordova.plugins.notification.local.schedule({
+					id: notification_id,
+					title: tipo,
+					text: msg,
+					at: now,
+					sound: 'sound/bike_horn.mp3',
+					icon: 'img/virtualID.JPEG',
+					badge: notification_id			
+				});			
+				notification_id++;
+			}
+			catch(e){
+				alert(e);
+			}
 		}
 	}
 			

@@ -63,25 +63,13 @@
 	}
 			
 	var root = {		
-		load: function(){
-			if(localStorage.getItem("check_in") == 'true'){
-				var status = "Ativado";
-				var funcao = 'root.checkOff()';
-				var classe = "notice-on";
-				var btn = 'on';
-			}
-			else{
-				var status = "Desativado";
-				var funcao = 'root.checkOn()';
-				var classe = "notice-off";
-				var btn = 'off';
-			}			
+		load: function(){					
 			
 			var text = 'Ative para receber notificações';		
 			build.text('p', 'text', text, 'window');			
 			build.div('container', 'container', 'window');
 			
-			var status = build.text('h3', classe, status, 'container'); // ID: notice-status
+			var status = build.text('h3', "notice-off", "Desativado", 'container'); // ID: notice-status
 				status.setAttribute('ID', 'notice-status');
 				
 			var checkbox = build.checkbox('checkbox', 'cbx', 'container');
@@ -91,10 +79,18 @@
 			
 			build.label('notice', 'lbl', '', 'container');
 			document.getElementById('notice').setAttribute('for', 'checkbox');
-			document.getElementById('notice').setAttribute('onClick', funcao);	
-			build.div('div', btn, 'notice');
+			document.getElementById('notice').setAttribute('onClick', 'root.checkOn()');	
+			build.div('div', 'off', 'notice');
 			
 			build.div('news', 'news', 'window');
+			
+			if(localStorage.getItem("check_in") == 'true'){
+				root.checkOn();
+			}
+			else{
+				root.checkOff();
+			}	
+			
 		},
 		
 		checkOn: function(){

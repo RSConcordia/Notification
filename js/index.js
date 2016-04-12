@@ -1,15 +1,19 @@
 	
-/*	var uuid = (function(){
-		
+	var uuid = (function(){
+		document.addEventListener("deviceready", function onDeviceReady(){
+				var deviceId = device.uuid;
+				alert(deviceId);
+				return deviceId;
+			}, false);	
 	})();	
-	var uuid =  localStorage.getItem("uuid"); */
+	var uuid =  localStorage.getItem("uuid"); 
 	
 	var time;
 	var notificationId = 0;	
 	
 	var notification = {
 		start: function(){
-			var uuid = root.getUUID();
+		//	var uuid = root.getUUID();
 			alert(uuid);
 			interval = setInterval(function(){
 				$.ajax({	
@@ -130,13 +134,5 @@
 			
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOn()');
 			notification.stop();
-		},
-		
-		getUUID: function(){
-			document.addEventListener("deviceready", function onDeviceReady(){
-				var deviceId = device.uuid;
-				alert(deviceId);
-				return deviceId;
-			}, false);		
 		}
 	}

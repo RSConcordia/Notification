@@ -54,8 +54,8 @@
 						title: tipo,
 						text: msg,
 						at: now,
-						sound: 'sound/bike_horn.mp3',
-						icon: 'img/virtualID.JPEG',
+						sound: 'file://sound/bike_horn.mp3',
+						icon: 'file://img/virtualID.JPEG',
 						badge: notification_id			
 					});			
 					notification_id++;

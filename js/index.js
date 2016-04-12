@@ -9,7 +9,8 @@
 	
 	var notification = {
 		start: function(){
-			var uuid = root.getUUID(); 
+			var uuid = root.getUUID();
+			alert(uuid);
 			interval = setInterval(function(){
 				$.ajax({	
 					url: "http://chat.v-id.net/Demo/VIDS/"+uuid+"/status/notice.txt",

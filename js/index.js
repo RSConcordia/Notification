@@ -9,7 +9,7 @@
 	var time;
 	var notification_id = 0;	
 	
-	var notification = {
+	var app = {
 		start: function(){
 			interval = setInterval(function(){
 				$.ajax({	
@@ -18,7 +18,7 @@
 					dataType: "text",
 					success: function (data){
 						root.checkOff();
-						notification.local('Demo', 'Sua bagagem foi encontrada', '1');
+						app.local('Demo', 'Sua bagagem foi encontrada', '1');
 						notification_id++;
 					},
 					error: function(){
@@ -44,20 +44,24 @@
 				
 		local: function(tipo, msg, indice){
 			try{
-				var time = new Date().getTime();
-				var _5_sec_from_now = new Date (time + 5 * 1000);
-				var now = new Date(time);
-				
-				cordova.plugins.notification.local.schedule({
-					id: notification_id,
-					title: tipo,
-					text: msg,
-					at: now,
-					sound: 'sound/bike_horn.mp3',
-					icon: 'img/virtualID.JPEG',
-					badge: notification_id			
-				});			
-				notification_id++;
+				document.addEventListener('deviceready', function () {
+					// cordova.plugins.notification.local is now available
+					
+					var time = new Date().getTime();
+					var _5_sec_from_now = new Date (time + 5 * 1000);
+					var now = new Date(time);
+					
+					cordova.plugins.notification.local.schedule({
+						id: notification_id,
+						title: tipo,
+						text: msg,
+						at: now,
+						sound: 'sound/bike_horn.mp3',
+						icon: 'img/virtualID.JPEG',
+						badge: notification_id			
+					});			
+					notification_id++;
+				}, false);				
 			}
 			catch(e){
 				alert(e);
@@ -114,7 +118,7 @@
 			
 			document.getElementById('status').innerHTML = 'Start Loop';
 			
-			notification.start();
+			app.start();
 		},
 		
 		checkOff: function(){
@@ -128,6 +132,6 @@
 			localStorage.setItem("check_in", 'false');
 			
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOn()');
-			notification.stop();
+			app.stop();
 		}
 	}

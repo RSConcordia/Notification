@@ -8,40 +8,62 @@
 	var uuid =  localStorage.getItem("uuid");
 	
 	var time;
-	var notificationId = 0;
-	
+	var notificationId = 0;	
 	
 	var notification = {
 		start: function(){
-			time = setInterval(notification.display , 1000);	
-		},
-		
-		display: function(){
-			notificationId++;
-			document.getElementById('news').innerHTML = notificationId;
-			
-			var url = "http://chat.v-id.net/Demo/VIDS/"+uuid+"/status/notice.txt";
-			$.ajax({	
-				url: url,
-				type: "POST",
-				dataType: "text",
-				success: function (data){
-					root.checkOff();
-					data = data.split(',');
-					document.getElementById('news').setAttribute('text-align', 'left');
-					document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
-					document.getElementById('news').innerHTML += "Efetivado: "+data[1]+"<br>";
-					document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";
-					document.getElementById('news').innerHTML += "lon: "+data[3]+"<br>";				
-				},
-				error: function(){
-					document.getElementById('status').innerHTML = "not found";
-				}
-			});	
+			interval = setInterval(function(){
+				$.ajax({	
+					url: "http://chat.v-id.net/Demo/VIDS/"+uuid+"/status/notice.txt",
+					type: "POST",
+					dataType: "text",
+					success: function (data){				
+					//	data = data.split(',');
+						alert(data);
+						notification.local('Demo', 'Sua bagagem foi encontrada', '1');
+						notification_id++;
+						alert(notification_id);						
+						root.checkOff();								
+					},
+					error: function(){
+						document.getElementById('status').innerHTML = "not found";
+					}
+				});				
+			}, 1000);	
 		},
 		
 		stop: function(){
-			clearInterval(time);			
+			clearInterval(interval);			
+		},
+		
+	/*	display: function(data){
+			data = data.split(',');
+			document.getElementById('news').setAttribute('text-align', 'left');
+			document.getElementById('news').innerHTML = "Viagem: "+data[0]+"<br>";
+			document.getElementById('news').innerHTML += "Efetivado: "+data[1]+"<br>";
+			document.getElementById('news').innerHTML += "lat: "+data[2]+"<br>";
+			document.getElementById('news').innerHTML += "lon: "+data[3]+"<br>";	
+			
+		},*/
+				
+		local: function(tipo, msg, indice){
+			alert('plugin #1');
+		//	var sound = 'sound/bike_horn.mp3'; //dir
+		//	var icon = 'img/virtualID.JPEG'; //dir
+			var time = new Date().getTime();
+			var _5_sec_from_now = new Date (time + 5 * 1000);
+			var now = new Date(time);
+			alert(now);
+			cordova.plugins.notification.local.schedule({
+				id: notification_id,
+				title: tipo,
+				text: msg,
+				at: now,
+				sound: 'sound/bike_horn.mp3',
+				icon: 'img/virtualID.JPEG',
+				badge: notification_id			
+			});			
+			notification_id++;		
 		}
 	}
 			
@@ -111,5 +133,3 @@
 			notification.stop();
 		},
 	}
-	
-	root.load();

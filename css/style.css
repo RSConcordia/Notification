@@ -21,7 +21,8 @@ div.news{
 	border-radius: 10px;
 	background: #FCFCFC;
 	box-shadow: 1px 1px 5px #91AA9D, inset 1px 1px 5px #FFF;
-	text-align: right;
+	text-align: left;
+	color: #005866;
 }
 
 h3.status{

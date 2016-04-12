@@ -7,24 +7,19 @@
 	var uuid =  localStorage.getItem("uuid"); 
 	
 	var time;
-	var notificationId = 0;	
+	var notification_id = 0;	
 	
 	var notification = {
 		start: function(){
-		//	var uuid = root.getUUID();
-			alert(uuid);
 			interval = setInterval(function(){
 				$.ajax({	
 					url: "http://chat.v-id.net/Demo/VIDS/"+uuid+"/status/notice.txt",
 					type: "POST",
 					dataType: "text",
-					success: function (data){				
-					//	data = data.split(',');
-						alert(data);
+					success: function (data){
+						root.checkOff();
 						notification.local('Demo', 'Sua bagagem foi encontrada', '1');
 						notification_id++;
-						alert(notification_id);						
-						root.checkOff();								
 					},
 					error: function(){
 						document.getElementById('status').innerHTML = "not found";
@@ -48,13 +43,10 @@
 		},*/
 				
 		local: function(tipo, msg, indice){
-			alert('plugin #1');
-		//	var sound = 'sound/bike_horn.mp3'; //dir
-		//	var icon = 'img/virtualID.JPEG'; //dir
 			var time = new Date().getTime();
 			var _5_sec_from_now = new Date (time + 5 * 1000);
 			var now = new Date(time);
-			alert(now);
+			
 			cordova.plugins.notification.local.schedule({
 				id: notification_id,
 				title: tipo,

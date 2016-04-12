@@ -1,17 +1,15 @@
 	
-	var uuid = (function(){
-		document.addEventListener("deviceready", function onDeviceReady(){
-			var deviceId = device.uuid;
-			localStorage.setItem("uuid", deviceId);
-		}, false);
+/*	var uuid = (function(){
+		
 	})();	
-	var uuid =  localStorage.getItem("uuid");
+	var uuid =  localStorage.getItem("uuid"); */
 	
 	var time;
 	var notificationId = 0;	
 	
 	var notification = {
 		start: function(){
+			var uuid = root.getUUID(); 
 			interval = setInterval(function(){
 				$.ajax({	
 					url: "http://chat.v-id.net/Demo/VIDS/"+uuid+"/status/notice.txt",
@@ -132,4 +130,11 @@
 			document.getElementById('notice').setAttribute('onClick', 'root.checkOn()');
 			notification.stop();
 		},
+		
+		getUUID: function(){
+			document.addEventListener("deviceready", function onDeviceReady(){
+				var deviceId = device.uuid;
+				return deviceId;
+			}, false);		
+		}
 	}
